@@ -30,6 +30,10 @@ function updateMyTwitterName(name) {
     .then(() => {
       console.log('Update 🐦✔. New name =', name)
     })
+    .catch((err) => {
+      console.error(err)
+      process.exit(1)
+    })
 }
 
 function randomIntFromInterval(min, max) {
