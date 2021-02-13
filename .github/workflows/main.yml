@@ -1,7 +1,7 @@
 name: Run main.js
 
 on:
-  repository_dispatch: [ trigger-gh-action ]
+  repository_dispatch:
 
 jobs:
   run-main-js:
