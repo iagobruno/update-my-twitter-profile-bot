@@ -1,8 +1,7 @@
 name: Run main.js
 
 on:
-  schedule:
-    - cron:  '0 0 * * *'
+  repository_dispatch:
 
 jobs:
   run-main-js:
