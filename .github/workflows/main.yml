@@ -1,7 +1,7 @@
 name: Run main.js
 
 on:
-  repository_dispatch:
+  repository_dispatch: [ trigger-gh-action ]
 
 jobs:
   run-main-js:
@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-      - run: npm install
+      - run: npm ci
       - run: node main.js
         env:
           APP_KEY: ${{ secrets.APP_KEY }}
