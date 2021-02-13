@@ -1,8 +1,6 @@
-name: Update Twitter name
-
 on:
   schedule:
-    - cron:  '0 2 * * *'
+    - cron:  '5 2 * * *'
 
 jobs:
   build:
