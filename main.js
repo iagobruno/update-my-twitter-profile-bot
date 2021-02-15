@@ -5,6 +5,7 @@ const differenceInDays = require('date-fns/differenceInDays')
 const addYears = require('date-fns/addYears')
 const addMonths = require('date-fns/addMonths')
 
+
 const myBday = new Date(1996, 07, 26, 00, 00, 00)
 const today = new Date()
 
@@ -20,6 +21,7 @@ updateMyTwitterName(`v${myAge}.${monthsSinceMyLastBday}.${daysSinceLastMonth}-rc
 
 function updateMyTwitterName(name) {
   console.log('name = ', name)
+  console.log('process.env.APP_KEY', process.env.APP_KEY, ' | ', process.env.APP_SECRET_KEY)
 
   new Twit({
     consumer_key: process.env.APP_KEY,
