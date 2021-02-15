@@ -14,3 +14,5 @@ jobs:
         env:
           APP_KEY: ${{ secrets.APP_KEY }}
           APP_SECRET_KEY: ${{ secrets.APP_SECRET_KEY }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}

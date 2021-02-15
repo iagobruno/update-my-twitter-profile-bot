@@ -20,13 +20,11 @@ updateMyTwitterName(`v${myAge}.${monthsSinceMyLastBday}.${daysSinceLastMonth}-rc
 
 
 function updateMyTwitterName(name) {
-  console.log('name = ', name)
-  console.log('process.env.APP_KEY', process.env.APP_KEY, ' | ', process.env.APP_SECRET_KEY)
-
   new Twit({
     consumer_key: process.env.APP_KEY,
     consumer_secret: process.env.APP_SECRET_KEY,
-    app_only_auth: true
+    access_token: process.env.ACCESS_TOKEN,
+    access_token_secret: process.env.ACCESS_TOKEN_SECRET
   })
     .post('account/update_profile', { name })
     .then(() => {
