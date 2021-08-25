@@ -1,7 +1,7 @@
 const Twit = require('twit')
-const differenceInYears = require('date-fns/differenceInYears')
-const differenceInMonths = require('date-fns/differenceInMonths')
-const differenceInDays = require('date-fns/differenceInDays')
+const diffInYears = require('date-fns/differenceInYears')
+const diffInMonths = require('date-fns/differenceInMonths')
+const diffInDays = require('date-fns/differenceInDays')
 const addYears = require('date-fns/addYears')
 const addMonths = require('date-fns/addMonths')
 
@@ -9,14 +9,17 @@ const addMonths = require('date-fns/addMonths')
 const myBday = new Date(1996, 07, 26, 00, 00, 00)
 const today = new Date()
 
-const myAge = differenceInYears(today, myBday)
+const myAge = diffInYears(today, myBday)
 
 const myLastBday = addYears(myBday, myAge)
-const monthsSinceMyLastBday = differenceInMonths(today, myLastBday)
+const monthsSinceMyLastBday = diffInMonths(today, myLastBday)
 
-const daysSinceLastMonth = differenceInDays(today, addMonths(myLastBday, monthsSinceMyLastBday) )
+const daysSinceLastMonth = diffInDays(today, addMonths(myLastBday, monthsSinceMyLastBday))
 
-updateMyTwitterName(`v${myAge}.${monthsSinceMyLastBday}.${daysSinceLastMonth}-rc.${randomIntFromInterval(1, 5)}`)
+const isMinorUpdate = daysSinceLastMonth === 0
+const suffix = isMinorUpdate ? '' : randomSuffix()
+
+updateMyTwitterName(`v${myAge}.${monthsSinceMyLastBday}.${daysSinceLastMonth}` + suffix)
 
 
 function updateMyTwitterName(name) {
@@ -36,6 +39,14 @@ function updateMyTwitterName(name) {
     })
 }
 
-function randomIntFromInterval(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min)
+function randomSuffix() {
+  return '-' + randomItem(['rc', 'beta', 'alpha', 'canary']) + '.' + randomInt()
+
+  function randomInt(min = 1, max = 6) {
+    return Math.floor(Math.random() * (max - min + 1) + min)
+  }
+
+  function randomItem(list) {
+    return list[Math.floor(Math.random() * list.length)]
+  }
 }
