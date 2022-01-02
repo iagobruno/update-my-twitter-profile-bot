@@ -1,9 +1,9 @@
 name: Run main.js
 
 on:
-  schedule:
-    - cron:  '1 3 * * *' # in UTC timezone
-  workflow_dispatch:
+  # schedule:
+    # - cron:  '1 3 * * *' # in UTC timezone
+  # workflow_dispatch:
 
 jobs:
   run-main-js:
